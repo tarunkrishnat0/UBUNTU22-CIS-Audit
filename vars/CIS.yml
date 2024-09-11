@@ -29,6 +29,8 @@ ubtu22_legacy_boot: true
 ## Use the switches below to disable specific rules independently of the chosen profile
 ##
 
+ubtu22cis_config_aide: true
+
 ## Section 1 Fixes
 # Section 1 is Initial setup (FileSystem Configuration, Configure Software Updates, Filesystem Integrity Checking, Secure Boot Settings,
 # Additional Process Hardening, Mandatory Access Control, Command Line Warning Banners, and GNOME Display Manager)
