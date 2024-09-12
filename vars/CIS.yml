@@ -326,7 +326,7 @@ ubtu22cis_rule_5_4_1_6: true
 ubtu22cis_rule_5_4_2_1: true
 ubtu22cis_rule_5_4_2_2: true
 ubtu22cis_rule_5_4_2_3: true
-ubtu22cis_rule_5_4_2_4: true
+ubtu22cis_rule_5_4_2_4: false # 5.4.2.4 | Ensure root password is set
 ubtu22cis_rule_5_4_2_5: true
 ubtu22cis_rule_5_4_2_6: true
 ubtu22cis_rule_5_4_2_7: true
@@ -665,7 +665,6 @@ ubtu22cis_ssh_weak_ciphers:
   - rijndael-cbc@lysator.liu.se
 
 ubtu22cis_ssh_strong_macs:
-  - HMAC-SHA1
   - hmac-sha2-256
   - hmac-sha2-512
 ubtu22cis_ssh_weak_macs:
@@ -697,7 +696,7 @@ ubtu22cis_ssh_weak_kex:
   - diffie-hellman-group14-sha1
   - diffie-hellman-group-exchange-sha1
 
-ubtu22cis_ssh_aliveinterval: 300
+ubtu22cis_ssh_aliveinterval: 15
 ubtu22cis_ssh_countmax: 3
 ## PAM
 ubtu22cis_pam_password:
@@ -717,7 +716,7 @@ ubtu22cis_pass:
   warn_age: "7"
 
 # set sugroup if differs from wheel
-ubtu22cis_sugroup: nosugroup
+ubtu22cis_sugroup: sugroup
 
 # var log location variable
 ubtu22_varlog_location: "/var/log/sudo.log"

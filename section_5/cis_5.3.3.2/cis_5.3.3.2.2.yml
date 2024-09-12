@@ -5,13 +5,13 @@
 command:
   password_minlen:
     title: 5.3.3.2.2 | Ensure minimum password length is configured
-    exec: grep -Psi -- '^\h*minlen\h*=\h*(1[4-9]|[2-9][0-9]|[1-9][0-9]{2,})\b' /etc/security/pwquality.conf /etc/security/pwquality.conf.d/*.conf
+    exec: grep -Psi -- '^\h*minlen\h*=\h*([8-9]|[1-9][0-9]{2,})\b' /etc/security/pwquality.conf /etc/security/pwquality.conf.d/*.conf
     exit-status:
       or:
       - 0
       - 1
     stdout:
-    - '/.*\:minlen\s*=\s*(1[4-9]|[2-4][0-9])/'
+    - '/.*\:minlen\s*=\s*([8-9]|[1-9][0-9])/'
     meta:
       server: 1
       workstation: 1
