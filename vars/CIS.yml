@@ -220,8 +220,8 @@ ubtu22cis_rule_4_1_1: true
 ubtu22cis_rule_4_1_2: true
 ubtu22cis_rule_4_1_3: true
 ubtu22cis_rule_4_1_4: true
-ubtu22cis_rule_4_1_5: true
-ubtu22cis_rule_4_1_6: true
+ubtu22cis_rule_4_1_5: false # 4.1.5 | Ensure ufw outbound connections are configured | Manual
+ubtu22cis_rule_4_1_6: false # 4.1.6 | Ensure ufw firewall rules exist for all open ports | Manual
 ubtu22cis_rule_4_1_7: true
 # 4.2 Configure nftables
 ubtu22cis_rule_4_2_1: true
