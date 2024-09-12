@@ -57,7 +57,7 @@ file:
     path: /etc/systemd/system/systemd-timesyncd.service
     filetype: symlink
     linked-to: /dev/null
-    exists: true
+    exists: false
     meta:
       server: 1
       workstation: 1

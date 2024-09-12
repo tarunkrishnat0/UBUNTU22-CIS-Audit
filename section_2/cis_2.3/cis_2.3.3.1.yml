@@ -4,6 +4,7 @@
   {{ if .Vars.ubtu22cis_level_1 }}
     {{ if .Vars.ubtu22cis_rule_2_3_3_1 }}
 file:
+  {{ if eq .Vars.ubtu22cis_time_sync_tool_chrony_timerserver_type "pool" }}
   chrony_pool:
     title: 2.3.3.1 | Ensure chrony is configured with authorized timeserver | timeserver pool
     path: /etc/chrony/sources.d/pool.source
@@ -24,9 +25,10 @@ file:
       NIST800-53R5:
       - AU-3
       - AU-12
+  {{ end }}
   chrony_timeservers:
     title: 2.3.3.1 | Ensure chrony is configured with authorized timeserver | timeserver servers
-    path: /etc/chrony/sources.d/server.source
+    path: /etc/chrony/chrony.conf
     exists: true
     contents:
     {{- range .Vars.ubtu22cis_time_servers }}

@@ -92,7 +92,7 @@ ubtu22cis_rule_1_1_2_7_4: false # 1.1.2.7.4 | Ensure noexec option set on /var/l
 ubtu22cis_rule_1_2_1_1: false # 1.2.1.1 | Ensure GPG keys are configured | Manual
 ubtu22cis_rule_1_2_1_2: false # 1.2.1.2 | Ensure package manager repositories are configured | Manual
 # 1.2.2 Configure Package updates
-ubtu22cis_rule_1_2_2_1: false # 1.2.2.1   | Ensure updates, patches, and additional security software are installed (Manual)
+ubtu22cis_rule_1_2_2_1: false # 1.2.2.1   | Ensure updates, patches, and additional security software are installed | Manual
 
 # 1.3 Mandatory Access Control
 ## 1.3.1 Configure AppArmor
@@ -157,7 +157,7 @@ ubtu22cis_rule_2_1_18: true
 ubtu22cis_rule_2_1_19: true
 ubtu22cis_rule_2_1_20: true
 ubtu22cis_rule_2_1_21: true
-ubtu22cis_rule_2_1_22: true
+ubtu22cis_rule_2_1_22: false # 2.1.22 | Ensure only approved services are listening on a network interface | Manual
 
 # 2.2 Configure client services
 ubtu22cis_rule_2_2_1: true
@@ -179,16 +179,17 @@ ubtu22cis_rule_2_3_3_3: true
 
 # 2.4 Job Schedulers
 # 2.4.1 Configure Cron
-ubtu22cis_rule_2_4_1_1: true
-ubtu22cis_rule_2_4_1_2: true
-ubtu22cis_rule_2_4_1_3: true
-ubtu22cis_rule_2_4_1_4: true
-ubtu22cis_rule_2_4_1_5: true
-ubtu22cis_rule_2_4_1_6: true
-ubtu22cis_rule_2_4_1_7: true
-ubtu22cis_rule_2_4_1_8: true
+# -IF- cron / at is not installed on the system, this sub section can be skipped
+ubtu22cis_rule_2_4_1_1: false
+ubtu22cis_rule_2_4_1_2: false
+ubtu22cis_rule_2_4_1_3: false
+ubtu22cis_rule_2_4_1_4: false
+ubtu22cis_rule_2_4_1_5: false
+ubtu22cis_rule_2_4_1_6: false
+ubtu22cis_rule_2_4_1_7: false
+ubtu22cis_rule_2_4_1_8: false
 # Configure At
-ubtu22cis_rule_2_4_2_1: true
+ubtu22cis_rule_2_4_2_1: false
 
 ## Section 3 Network Configuration
 # 3.1 Configure Network Devices
