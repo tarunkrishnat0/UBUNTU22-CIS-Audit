@@ -5,7 +5,7 @@
 file:
   usb-storage_disabled:
     title: 1.1.1.8 | Ensure usb-storage kernel module is not available | modprobe
-    path: /etc/modprobe.d/CIS.conf
+    path: /etc/modprobe.d/cis.conf
     exists: true
     contents:
     - '/^install usb-storage /bin/(true|false)/'
@@ -21,7 +21,7 @@ file:
       NIST800-53R5: SI-3
   usb-storage_blacklist:
     title: 1.1.1.8 | Ensure usb-storage kernel module is not available | blacklist
-    path: /etc/modprobe.d/blacklist.conf
+    path: /etc/modprobe.d/cis.conf
     exists: true
     contents:
     - '/^blacklist usb-storage/'

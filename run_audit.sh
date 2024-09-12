@@ -25,7 +25,7 @@
 # Goss benchmark variables (these should not need changing unless new release)
 BENCHMARK=CIS # Benchmark Name aligns to the audit
 BENCHMARK_VER=2.0.0
-BENCHMARK_OS=RHEL9
+BENCHMARK_OS=UBUNTU2204
 
 # Goss host Variables
 AUDIT_BIN="${AUDIT_BIN:-/usr/local/bin/goss}"  # location of the goss executable
@@ -47,6 +47,9 @@ Help()
   echo "-v     optional - relative path to thevars file to load (default e.g. $AUDIT_CONTENT_LOCATION/RHEL7-$BENCHMARK/vars/$BENCHMARK.yml)"
   echo "-w     optional - Sets the system_type to workstation (Default - Server)"
   echo "-h     Print this Help."
+  echo
+  echo "Dependencies: sudo apt install -y jq && sudo pip install sqlite-utils"
+  echo "Example: sudo ./run_audit.sh -v vars/CIS.yml -w Workstation"
   echo
 }
 
@@ -213,3 +216,39 @@ else
   echo -e "Fail: There were issues when running the audit please investigate $audit_out";
   exit 1
 fi
+
+audit_db=${audit_out//json/db}
+rm -rf $audit_db
+jq '[
+        .results[] | 
+	    del(."matcher-result") |
+	    [
+		    paths(scalars) as $path | 
+		    {
+                "key": $path | join("_"),
+                "value": getpath($path)
+            }
+        ] |
+        from_entries |
+        walk(
+            if type=="object"
+            then
+                with_entries(
+	                select(
+		                (.key | test(".[1-9]$") | not) and
+		                (.key | startswith("meta_Mitre") | not) and
+		                (.key | startswith("meta_host") | not) and
+		                (.key | startswith("meta_benchmark") | not) and
+		                (.key | startswith("meta_NIST") | not) and
+		                (.key | test("duration") | not) and
+		                (.key | test("start-time") | not) and
+		                (.key | test("end-time") | not)
+		            )
+		        )
+		    else . end)
+    ]
+  ' $audit_out | \
+  sqlite-utils insert $audit_db cis-ig1-lvl1-workstation --alter -
+
+chown ubuntu $audit_out
+chown ubuntu $audit_db

@@ -6,7 +6,7 @@
 file:
   squashfs_disabled:
     title: 1.1.1.6 | Ensure squashfs kernel module is not available | modprobe
-    path: /etc/modprobe.d/CIS.conf
+    path: /etc/modprobe.d/cis.conf
     exists: true
     contents:
     - '/^install squashfs /bin/(true|false)/'
@@ -22,7 +22,7 @@ file:
       NIST800-53R5: CM-7
   squashfs_blacklist:
     title: 1.1.1.6 | Ensure squashfs kernel module is not available | blacklist
-    path: /etc/modprobe.d/blacklist.conf
+    path: /etc/modprobe.d/cis.conf
     exists: true
     contents:
     - '/^blacklist squashfs/'

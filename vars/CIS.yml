@@ -14,7 +14,7 @@ ubtu22cis_section6: true
 ubtu22cis_section7: true
 
 ubtu22cis_level_1: true
-ubtu22cis_level_2: true
+ubtu22cis_level_2: false
 
 
 #  to enable rules that may have IO impact on a system e.g. full filesystem scans or CPU heavy
@@ -48,10 +48,10 @@ ubtu22cis_rule_1_1_1_8: true
 
 # 1.1.2 Configure Filesystem Partitions
 # /tmp
-ubtu22cis_rule_1_1_2_1_1: true
-ubtu22cis_rule_1_1_2_1_2: true
-ubtu22cis_rule_1_1_2_1_3: true
-ubtu22cis_rule_1_1_2_1_4: true
+ubtu22cis_rule_1_1_2_1_1: false # 1.1.2.1.1 | Ensure /tmp is a separate partition (Automated)
+ubtu22cis_rule_1_1_2_1_2: false # 1.1.2.1.2 | Ensure nodev option set on /tmp partition (Automated)
+ubtu22cis_rule_1_1_2_1_3: false # 1.1.2.1.3 | Ensure nosuid option set on /tmp partition (Automated)
+ubtu22cis_rule_1_1_2_1_4: false # 1.1.2.1.4 | Ensure noexec option set on /tmp partition (Automated)
 
 # /dev/shm
 ubtu22cis_rule_1_1_2_2_1: true
@@ -60,39 +60,39 @@ ubtu22cis_rule_1_1_2_2_3: true
 ubtu22cis_rule_1_1_2_2_4: true
 
 # /home
-ubtu22cis_rule_1_1_2_3_1: true
-ubtu22cis_rule_1_1_2_3_2: true
-ubtu22cis_rule_1_1_2_3_3: true
+ubtu22cis_rule_1_1_2_3_1: false # 1.1.2.3.1 | Ensure separate partition exists for /home (Automated)
+ubtu22cis_rule_1_1_2_3_2: false # 1.1.2.3.2 | Ensure nodev option set on /home partition (Automated)
+ubtu22cis_rule_1_1_2_3_3: false # 1.1.2.3.3 | Ensure nosuid option set on /home partition (Automated)
 
 # /var
-ubtu22cis_rule_1_1_2_4_1: true
-ubtu22cis_rule_1_1_2_4_2: true
-ubtu22cis_rule_1_1_2_4_3: true
+ubtu22cis_rule_1_1_2_4_1: false # 1.1.2.4.1 | Ensure separate partition exists for /var (Automated)
+ubtu22cis_rule_1_1_2_4_2: false # 1.1.2.4.2 | Ensure nodev option set on /var partition (Automated)
+ubtu22cis_rule_1_1_2_4_3: false # 1.1.2.4.3 | Ensure nosuid option set on /var partition (Automated)
 
 # /var/tmp
-ubtu22cis_rule_1_1_2_5_1: true
-ubtu22cis_rule_1_1_2_5_2: true
-ubtu22cis_rule_1_1_2_5_3: true
-ubtu22cis_rule_1_1_2_5_4: true
+ubtu22cis_rule_1_1_2_5_1: false # 1.1.2.5.1 | Ensure separate partition exists for /var/tmp (Automated)
+ubtu22cis_rule_1_1_2_5_2: false # 1.1.2.5.2 | Ensure nodev option set on /var/tmp partition (Automated)
+ubtu22cis_rule_1_1_2_5_3: false # 1.1.2.5.3 | Ensure nosuid option set on /var/tmp partition (Automated)
+ubtu22cis_rule_1_1_2_5_4: false # 1.1.2.5.4 | Ensure noexec option set on /var/tmp partition (Automated)
 
 # /var/log
-ubtu22cis_rule_1_1_2_6_1: true
-ubtu22cis_rule_1_1_2_6_2: true
-ubtu22cis_rule_1_1_2_6_3: true
-ubtu22cis_rule_1_1_2_6_4: true
+ubtu22cis_rule_1_1_2_6_1: false # 1.1.2.6.1 | Ensure separate partition exists for /var/log (Automated)
+ubtu22cis_rule_1_1_2_6_2: false # 1.1.2.6.2 | Ensure nodev option set on /var/log partition (Automated)
+ubtu22cis_rule_1_1_2_6_3: false # 1.1.2.6.3 | Ensure nosuid option set on /var/log partition (Automated)
+ubtu22cis_rule_1_1_2_6_4: false # 1.1.2.6.4 | Ensure noexec option set on /var/log partition (Automated)
 
 # /var/log/audit
-ubtu22cis_rule_1_1_2_7_1: true
-ubtu22cis_rule_1_1_2_7_2: true
-ubtu22cis_rule_1_1_2_7_3: true
-ubtu22cis_rule_1_1_2_7_4: true
+ubtu22cis_rule_1_1_2_7_1: false # 1.1.2.7.1 | Ensure separate partition exists for /var/log/audit (Automated
+ubtu22cis_rule_1_1_2_7_2: false # 1.1.2.7.2 | Ensure nodev option set on /var/log/audit partition (Automated)
+ubtu22cis_rule_1_1_2_7_3: false # 1.1.2.7.3 | Ensure nosuid option set on /var/log/audit partition (Automated)
+ubtu22cis_rule_1_1_2_7_4: false # 1.1.2.7.4 | Ensure noexec option set on /var/log/audit partition (Automated)
 
 # 1.2 Package mgmt
 # 1.2.1 Configure Package repositories
-ubtu22cis_rule_1_2_1_1: true
-ubtu22cis_rule_1_2_1_2: true
+ubtu22cis_rule_1_2_1_1: false # 1.2.1.1 | Ensure GPG keys are configured | Manual
+ubtu22cis_rule_1_2_1_2: false # 1.2.1.2 | Ensure package manager repositories are configured | Manual
 # 1.2.2 Configure Package updates
-ubtu22cis_rule_1_2_2_1: true
+ubtu22cis_rule_1_2_2_1: false # 1.2.2.1   | Ensure updates, patches, and additional security software are installed (Manual)
 
 # 1.3 Mandatory Access Control
 ## 1.3.1 Configure AppArmor
@@ -102,7 +102,7 @@ ubtu22cis_rule_1_3_1_3: true
 ubtu22cis_rule_1_3_1_4: true
 
 # 1.4 Configure Bootloader
-ubtu22cis_rule_1_4_1: true
+ubtu22cis_rule_1_4_1: false # 1.4.1     | Ensure bootloader password is set (Automated)
 ubtu22cis_rule_1_4_2: true
 
 # 1.5 Configure additional Process Hardening
@@ -113,7 +113,7 @@ ubtu22cis_rule_1_5_4: true
 ubtu22cis_rule_1_5_5: true
 
 # 1.6 Configure Command Line Warning Banners
-ubtu22cis_rule_1_6_1: true
+ubtu22cis_rule_1_6_1: false # 1.6.1     | Ensure message of the day is configured properly (Automated)
 ubtu22cis_rule_1_6_2: true
 ubtu22cis_rule_1_6_3: true
 ubtu22cis_rule_1_6_4: true
