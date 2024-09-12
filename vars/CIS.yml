@@ -566,7 +566,8 @@ ubtu22cis_ftp_client: false
 ## Control 2.3.1.1
 # This variable choses the tool used for time synchronization
 # The two options are `chrony`and `systemd-timesyncd`.
-ubtu22cis_time_sync_tool: "systemd-timesyncd"
+ubtu22cis_time_sync_tool: "chrony"
+ubtu22cis_time_sync_tool_chrony_timerserver_type: "servers"
 
 ## Controls 2.3.x - Configure time pools & servers for chrony and timesyncd
 # The following variable represents a list of of time server pools used
@@ -575,6 +576,11 @@ ubtu22cis_time_sync_tool: "systemd-timesyncd"
 # The default setting for the `options` is `iburst maxsources 4` -- please refer to the documentation
 # of the time synchronization mechanism you are using.
 ubtu22cis_time_pool_name: time.nist.gov
+ubtu22cis_time_pool:
+  - uri: time.cloudflare.com
+    config: iburst
+  - uri: ntp.ubuntu.com
+    config: iburst
 
 # The following variable represents a list of of time servers used
 # for configuring chrony and timesyncd
