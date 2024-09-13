@@ -343,16 +343,16 @@ ubtu22cis_rule_6_1_2: true
 ubtu22cis_rule_6_1_3: true
 # 6.2.1.1 Configure systemd-journald service
 ubtu22cis_rule_6_2_1_1_1: true
-ubtu22cis_rule_6_2_1_1_2: true
+ubtu22cis_rule_6_2_1_1_2: false # 6.2.1.1.2 | Ensure journald log file access is configured | Manual
 ubtu22cis_rule_6_2_1_1_3: true
 ubtu22cis_rule_6_2_1_1_4: true
 ubtu22cis_rule_6_2_1_1_5: true
 ubtu22cis_rule_6_2_1_1_6: true
-# 6.2.1.2 Configure systemd-journald service
-ubtu22cis_rule_6_2_1_2_1: true
-ubtu22cis_rule_6_2_1_2_2: true
-ubtu22cis_rule_6_2_1_2_3: true
-ubtu22cis_rule_6_2_1_2_4: true
+# 6.2.1.2 Configure systemd-journald-remote service
+ubtu22cis_rule_6_2_1_2_1: false # 6.2.1.2.1 | Ensure systemd-journal-remote is installed (Automated)
+ubtu22cis_rule_6_2_1_2_2: false # 6.2.1.2.2 | Ensure systemd-journal-remote authentication is configured (Manual)
+ubtu22cis_rule_6_2_1_2_3: false # 6.2.1.2.3 | Ensure systemd-journal-upload is enabled and active (Automated)
+ubtu22cis_rule_6_2_1_2_4: false # 6.2.1.2.4 | Ensure systemd-journal-remote service is not in use (Automated)
 # 6.2.2 Configure Logfiles
 ubtu22cis_rule_6_2_2_1: true
 # 6.3.1 Configure auditd Service

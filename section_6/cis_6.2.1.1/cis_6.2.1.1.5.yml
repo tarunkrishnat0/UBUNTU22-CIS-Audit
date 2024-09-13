@@ -5,7 +5,7 @@
 command:
   storage_journald_conf:
     title: 6.2.1.1.5 | Ensure journald Storage is configured
-    exec: grep -i Storage= /etc/systemd/journald.conf /etc/systemd/journald.conf.d/*.conf
+    exec: grep -si Storage= /etc/systemd/journald.conf /etc/systemd/journald.conf.d/*.conf
     exit-status:
       or:
       - 0
