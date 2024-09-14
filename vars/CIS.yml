@@ -413,7 +413,7 @@ ubtu22cis_rule_7_1_9: true
 ubtu22cis_rule_7_1_10: true
 ubtu22cis_rule_7_1_11: true
 ubtu22cis_rule_7_1_12: true
-ubtu22cis_rule_7_1_13: true
+ubtu22cis_rule_7_1_13: false # 7.1.13 | Ensure SUID and SGID files are reviewed | Manual
 # 7.2 Local User and Group Settings
 ubtu22cis_rule_7_2_1: true
 ubtu22cis_rule_7_2_2: true
@@ -552,7 +552,7 @@ ubtu22cis_nginx_server: false
 ubtu22cis_nginx_mask: false
 ubtu22cis_xinetd_server: false
 ubtu22cis_xinetd_mask: false
-ubtu22cis_xwindow_server: false  # will remove mask not an option
+ubtu22cis_xwindow_server: true  # will remove mask not an option
 ubtu22cis_is_mail_server: false
 
 # Client Services
@@ -696,7 +696,7 @@ ubtu22cis_ssh_weak_kex:
   - diffie-hellman-group14-sha1
   - diffie-hellman-group-exchange-sha1
 
-ubtu22cis_ssh_aliveinterval: 15
+ubtu22cis_ssh_aliveinterval: 300
 ubtu22cis_ssh_countmax: 3
 ## PAM
 ubtu22cis_pam_password:

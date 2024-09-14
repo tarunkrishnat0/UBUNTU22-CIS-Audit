@@ -31,7 +31,7 @@ BENCHMARK_OS=UBUNTU2204
 AUDIT_BIN="${AUDIT_BIN:-/usr/local/bin/goss}"  # location of the goss executable
 AUDIT_BIN_MIN_VER="0.4.4"
 AUDIT_FILE="${AUDIT_FILE:-goss.yml}"  # the default goss file used by the audit provided by the audit configuration
-AUDIT_CONTENT_LOCATION="${AUDIT_CONTENT_LOCATION:-/opt}"  # Location of the audit configuration file as available to the OS
+AUDIT_CONTENT_LOCATION="${AUDIT_CONTENT_LOCATION:-/home/ubuntu}"  # Location of the audit configuration file as available to the OS
 
 # help output
 Help()
@@ -95,6 +95,7 @@ else
 fi
 
 os_maj_ver="$(grep -w VERSION_ID= /etc/os-release | awk -F\" '{print $2}' | cut -d '.' -f1)"
+os_maj_ver="22"
 audit_content_version=$os_vendor$os_maj_ver-$BENCHMARK-Audit
 audit_content_dir=$AUDIT_CONTENT_LOCATION/$audit_content_version
 audit_vars=vars/${BENCHMARK}.yml
@@ -137,7 +138,7 @@ host_os_hostname="$(hostname)"
 
 ## Set variable audit_out
 if [ -z "$OUTFILE" ]; then
-  export audit_out=${AUDIT_CONTENT_LOCATION}/audit_${host_os_hostname}-${BENCHMARK}-${BENCHMARK_OS}_${host_epoch}.$format
+  export audit_out=${AUDIT_CONTENT_LOCATION}/UBUNTU22-CIS-Audit/audit_reports/audit_${host_os_hostname}-${BENCHMARK}-${BENCHMARK_OS}_${host_epoch}.$format
 else
   export audit_out=${OUTFILE}
 fi
@@ -214,6 +215,7 @@ if [ "$(grep -c test-count "$audit_out")" -ge 1 ]  || [ "$format" = junit ] || [
   echo "###############"
 else
   echo -e "Fail: There were issues when running the audit please investigate $audit_out";
+  chown ubuntu $audit_out
   exit 1
 fi
 

@@ -26,7 +26,7 @@ command:
       - IA-5
   dot_file_perms:
     title: 7.2.10 | Ensure local interactive user dot files access is configured | dot files permissions
-    exec: 'find /home/ -name "\.*" -perm /g+w,o+w | grep -v .bash_history'
+    exec: 'find /home/ -maxdepth 4 -not -type d -name "\.*" -perm /g+w,o+w | grep -v .bash_history'
     exit-status:
       or:
       - 0
