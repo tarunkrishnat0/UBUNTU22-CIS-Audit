@@ -31,7 +31,9 @@ BENCHMARK_OS=UBUNTU2204
 AUDIT_BIN="${AUDIT_BIN:-/usr/local/bin/goss}"  # location of the goss executable
 AUDIT_BIN_MIN_VER="0.4.4"
 AUDIT_FILE="${AUDIT_FILE:-goss.yml}"  # the default goss file used by the audit provided by the audit configuration
-AUDIT_CONTENT_LOCATION="${AUDIT_CONTENT_LOCATION:-/home/ubuntu}"  # Location of the audit configuration file as available to the OS
+AUDIT_CONTENT_LOCATION="${AUDIT_CONTENT_LOCATION:-$(realpath ..)}"  # Location of the audit configuration file as available to the OS
+
+CURRENT_USER=${SUDO_USER:-$USER}
 
 # help output
 Help()
@@ -215,7 +217,7 @@ if [ "$(grep -c test-count "$audit_out")" -ge 1 ]  || [ "$format" = junit ] || [
   echo "###############"
 else
   echo -e "Fail: There were issues when running the audit please investigate $audit_out";
-  chown ubuntu $audit_out
+  chown $CURRENT_USER $audit_out
   exit 1
 fi
 
@@ -252,5 +254,5 @@ jq '[
   ' $audit_out | \
   sqlite-utils insert $audit_db cis-ig1-lvl1-workstation --alter -
 
-chown ubuntu $audit_out
-chown ubuntu $audit_db
+chown $CURRENT_USER $audit_out
+chown $CURRENT_USER $audit_db
