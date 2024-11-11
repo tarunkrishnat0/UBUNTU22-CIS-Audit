@@ -140,6 +140,7 @@ host_os_hostname="$(hostname)"
 
 ## Set variable audit_out
 if [ -z "$OUTFILE" ]; then
+  mkdir -p ${AUDIT_CONTENT_LOCATION}/UBUNTU22-CIS-Audit/audit_reports/
   export audit_out=${AUDIT_CONTENT_LOCATION}/UBUNTU22-CIS-Audit/audit_reports/audit_${host_os_hostname}-${BENCHMARK}-${BENCHMARK_OS}_${host_epoch}.$format
 else
   export audit_out=${OUTFILE}
